@@ -1,0 +1,19 @@
+<div class="form-group">
+    <%= label_tag 'Email info' %>
+    <%= text_field_tag 'theme_option[email_info]', current_theme.get_option('email_info'), class: 'form-control' %>
+</div>
+
+<div class="form-group">
+    <%= label_tag 'Phone' %>
+    <%= text_field_tag 'theme_option[phone_info]', current_theme.get_option('phone_info'), class: 'form-control' %>
+</div>
+
+<div class="form-group">
+    <%= label_tag 'Address' %>
+    <%= text_field_tag 'theme_option[address_info]', current_theme.get_option('address_info'), class: 'form-control' %>
+</div>
+
+<div class="form-group">
+    <%= label_tag nil, 'Map Location (Iframe)' %> <br><small>Sample: <code>&lt;iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.958900464012!2..." frameborder="0" style="border:0" allowfullscreen="">&lt;/iframe&gt;</code></small>
+    <%= text_field_tag 'theme_option[map_url]', current_theme.get_option('map_url'), class: 'form-control' %>
+</div>

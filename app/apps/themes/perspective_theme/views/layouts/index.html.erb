@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Perspective Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <%= stylesheet_link_tag theme_asset_path("css/main") %>
+    <%= javascript_include_tag theme_asset_path("js/main.js") %>
+    <%= raw the_head %>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('.flexslider').flexslider({
+                animation: "slide",
+                start: function(slider){
+                    $('body').removeClass('loading');
+                }
+            });
+            $('.img-top a').Chocolat();
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+    </script>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <%= render theme_view('layouts/header') %>
+    <% if is_home? %>
+        <%= yield %>
+    <% else %>
+        <div class="banner1"> </div>
+        <div class="single">
+            <div class="container inner_container">
+                <%= yield %>
+            </div>
+        </div>
+    <% end %>
+    <!-- //features -->
+    <%= render theme_view('layouts/footer') %>
+</body>
+</html>

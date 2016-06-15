@@ -1,0 +1,53 @@
+<!-- contact -->
+<div id="contact" class="contact">
+    <div class="container">
+        <div class="col-md-6 contact-left">
+            <h2><%= current_theme.the_field('newsletter_layout_title', 'Newsletter') %></h2>
+            <p><%= current_theme.the_field('newsletter_layout_descr', 'Enter your email and subscribe to our newsletter and never miss any updates.') %></p>
+            <div class="mail-sub">
+                <%= form_tag(plugins_cama_subscriber_subscribe_url) do %>
+                    <input type="email" name="email" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" required="">
+                    <button type="submit">Go!</button>
+                    <div class="clearfix"> </div>
+                <% end %>
+            </div>
+            <ul>
+                <li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><%= current_theme.get_option('address_info', 'Newyork Still Road. 756 gt globel Place.') %></li>
+                <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span><%= current_theme.get_option('phone_info', '+0943 976 908') %></li>
+                <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:<%= current_theme.get_option('email_info', 'default_email@example.com') %>"><%= current_theme.get_option('email_info', 'default_email@example.com') %></a></li>
+            </ul>
+        </div>
+        <div class="col-md-6 contact-right">
+            <div class="map">
+                <%= raw current_theme.get_option('map_url', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.958900464012!2d36.23097800000001!3d49.993379999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a0f009ab9f07%3A0xa21e10f67fa29ce!2sGeorgia+Education+Center!5e0!3m2!1sen!2sin!4v1436943860334') %>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="contact-bottom">
+            <h2><%= current_theme.the_field('contact_form_title', 'Contact Us') %></h2>
+            <%= raw do_shortcode('[forms slug=perspective]') %>
+        </div>
+    </div>
+</div>
+<!-- //contact -->
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <div class="footer-left">
+            <p>&copy 2016 Perspective. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts.</a></p>
+        </div>
+        <div class="header-bottom-right2 footer-right">
+            <ul>
+                <%= raw perspective_social_networks %>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!-- //footer -->
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+</script>

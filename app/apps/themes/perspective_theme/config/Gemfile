@@ -1,0 +1,1 @@
+gem 'cama_subscriber', github: 'owen2345/cama_subscriber'

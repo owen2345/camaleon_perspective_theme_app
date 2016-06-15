@@ -1,0 +1,38 @@
+<div class="news-grid">
+    <div class="col-md-8 blog-left">
+        <% @posts.decorate.each do |post| %>
+            <div class="blog-left-grid">
+                <div class="blog-leftl">
+                    <h4>November <span>15</span></h4>
+                    <a href="#"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i>10</a>
+                </div>
+                <div class="blog-leftr">
+                    <a href="<%= post.the_url %>"><img src="<%= post.the_thumb_url(theme_asset_url('images/6.jpg')) %>" alt=" " class="img-responsive" /></a>
+                    <p><%= post.the_excerpt %></p>
+                    <ul>
+                        <li><a href="#"><i class="glyphicon glyphicon-user" aria-hidden="true"></i><%= post.the_author.fullname %></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i><%= post.the_tags.count %> Tages</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-comment" aria-hidden="true"></i><%= post.the_comments.count %> Comments</a></li>
+                    </ul>
+                    <div class="more">
+                        <a href="<%= post.the_url %>">Learn More</a>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        <% end %>
+    </div>
+    <%= render 'partials/blog_sidebar', post_type: @post_type %>
+    <div class="clearfix"> </div>
+</div>
+<nav>
+    <ul class="pagination page-blog">
+        <li><a href="#" aria-label="Previous"><span aria-hidden="true">�</span></a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#" aria-label="Next"><span aria-hidden="true">�</span></a></li>
+    </ul>
+</nav>

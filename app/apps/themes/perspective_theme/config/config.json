@@ -1,0 +1,14 @@
+{
+  "name" : "Perspective Theme",
+  "description" : "",
+  "thumb" : "images/image.png",
+  "helpers": [
+    "Themes::PerspectiveTheme::MainHelper"
+  ],
+  "hooks": {
+    "on_active": ["perspective_theme_on_install_theme"],
+    "on_inactive": ["perspective_theme_on_uninstall_theme"],
+    "on_theme_settings": ["perspective_theme_settings"]
+    //here all your hooks
+  }
+}

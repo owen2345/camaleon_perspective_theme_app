@@ -1,0 +1,85 @@
+<div class="single-grid">
+    <div class="col-md-8 blog-left">
+        <div class="blog-left-grid">
+            <div class="blog-leftl">
+                <h4>November <span>15</span></h4>
+                <a href="#"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i>10</a>
+            </div>
+            <div class="blog-leftr">
+                <img src="<%= @post.the_thumb_url(theme_asset_url('images/6.jpg')) %>" alt=" " class="img-responsive" />
+                <div>
+                    <%= raw @post.the_content %>
+                </div>
+                <ul>
+                    <li><a href="#"><i class="glyphicon glyphicon-user" aria-hidden="true"></i>User Name</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i>0 Tages</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-comment" aria-hidden="true"></i>10 Comments</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+            <div class="admin-text">
+                <h5>Written By <%= @post.the_author.fullname %></h5>
+                <div class="admin-text-left">
+                    <a href="#"><img src="<%= @post.the_author.the_avatar(theme_asset_url('images/icon1.png')) %>" alt=""/></a>
+                </div>
+                <div class="admin-text-right">
+                    <p><%= @post.the_author.the_slogan %></p>
+                    <span>View all posts by:<a href="#"> <%= @post.the_author.first_name %> </a></span>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="response">
+                <h4>Responses</h4>
+                <% @post.the_comments.decorate.each do |comment|  %>
+                    <div class="media response-info">
+                        <div class="media-left response-text-left">
+                            <a href="<%= comment.the_author_url %>">
+                                <img class="media-object" src="<%= comment.the_avatar(theme_asset_url('images/icon1.png')) %>" alt=""/>
+                            </a>
+                            <h5><a href="#"><%= comment.the_author_name %></a></h5>
+                        </div>
+                        <div class="media-body response-text-right">
+                            <p><%= comment.the_content %></p>
+                            <ul>
+                                <li><%= comment.created_at %></li>
+                                <li><a href="single.html">Reply</a></li>
+                            </ul>
+                            <div class="media response-info">
+                                <% comment.the_answers.decorate.each do |answer| %>
+                                    <div class="media-left response-text-left">
+                                        <a href="#">
+                                            <img class="media-object" src="<%= answer.the_avatar(theme_asset_url('images/icon1.png')) %>" alt=""/>
+                                        </a>
+                                        <h5><a href="#"><%= answer.the_author_name %></a></h5>
+                                    </div>
+                                    <div class="media-body response-text-right">
+                                        <p><%= answer.the_content %></p>
+                                        <ul>
+                                            <li><%= answer.created_at %></li>
+                                            <li><a href="single.html">Reply</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                <% end %>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                <% end %>
+            </div>
+            <div class="coment-form">
+                <h4>Leave your comment</h4>
+                <%= form_for @post, url:{action: :save_comment, post_id: @post.id}, html: {method: "post", class: "form-comment"} do |f|%>
+                    <%= render partial: "camaleon_cms/flash_messages" %>
+                    <input type="text" name="post_comment[name]" value="Name " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+                    <input type="email" name="post_comment[email]" value="Email (will not be published)*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email (will not be published)*';}" required="">
+                    <input type="text" name="post_comment[url]" value="Website" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Website';}" required="">
+                    <textarea type="text" name="post_comment[content]" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Comment...';}" required="">Your Comment...</textarea>
+                    <button type="submit">Submit Comment</button>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <%= render 'partials/blog_sidebar', post_type: @post_type %>
+    <div class="clearfix"> </div>
+</div>

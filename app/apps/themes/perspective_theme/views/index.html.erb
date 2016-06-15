@@ -1,0 +1,138 @@
+<!-- banner -->
+<div class="banner">
+    <div class="container">
+        <section class="slider">
+            <div class="flexslider">
+                <ul class="slides">
+                    <% current_theme.the_fields_grouped(['home_slider_title', 'home_sldier_description']).each do |group| %>
+                        <li>
+                            <div class="banner-info">
+                                <h1><%= group['home_slider_title'].first %></h1>
+                                <p><%= group['home_sldier_description'].first %></p>
+                            </div>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- //banner -->
+<!-- services -->
+<div class="services">
+    <div class="container">
+        <h3><%= current_theme.the_field('service_layout_title', 'Our Services') %></h3>
+        <p class="vel"><%= current_theme.the_field('service_layout_descr', 'Lorem ipsum...') %></p>
+        <% current_site.the_posts('our_services').decorate.each_slice(2).to_a.each do |services| %>
+            <div class="services-grids">
+                <% services.each_with_index do |service, index| %>
+                    <div class="col-md-6 services-grid-<%= index == 0 ? 'left' : 'right' %>">
+                        <div class="col-xs-4 services-grid-left1">
+                            <i class="hovicon effect-2 sub-a"><span class="glyphicon <%= service.get_field('service-icon', 'glyphicon-shopping-cart') %>" aria-hidden="true"></span></i>
+                        </div>
+                        <div class="col-xs-8 services-grid-left2">
+                            <h4><%= service.the_title %></h4>
+                            <p><%= service.the_excerpt %> <%= service.the_edit_link %></p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                <% end %>
+                <div class="clearfix"> </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+<!-- //services -->
+<!-- portfolio -->
+<div id="portfolio" class="portfolio">
+    <div class="container">
+        <h3><%= current_theme.the_field('works_layout_title', 'Our Works') %></h3>
+        <p class="vel"><%= current_theme.the_field('works_layout_descr', 'Lorem ipsummm') %></p>
+        <div class="sap_tabs">
+            <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                <ul class="resp-tabs-list">
+                    <li class="resp-tab-item"><span>All</span></li>
+                    <% cats = current_site.the_categories('nuestros-trabajos').no_empty.decorate.each do |category| %>
+                        <li class="resp-tab-item"><span><%= category.the_title %></span></li>
+                    <% end %>
+                </ul>
+                <div class="clearfix"> </div>
+                <div class="resp-tabs-container">
+                    <div class="tab-1 resp-tab-content">
+                        <div class="main">
+                            <% current_site.the_posts('nuestros-trabajos').decorate.each do |work| %>
+                                <div class="view effect">
+                                    <div class="img-top">
+                                        <a href="<%= work.get_field('large-image', theme_asset_url('images/1.jpg')) %>" rel="title" class="b-link-stripe b-animate-go  thickbox">
+                                            <img src="<%= work.get_field('short-image', theme_asset_url('images/1.jpg')) %>" class="img-responsive" alt="" />
+                                            <div class="mask"></div>
+                                            <div class="content">
+                                                <span class="info" title="Full Image"> </span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            <% end %>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <% cats.each_with_index do |cat, index| %>
+                        <div class="tab-1 resp-tab-content">
+                            <div class="main">
+                                <% cat.the_posts.decorate.each do |work| %>
+                                    <div class="view effect">
+                                        <div class="img-top">
+                                            <a href="<%= work.get_field('large-image', theme_asset_url('images/1.jpg')) %>" rel="title" class="b-link-stripe b-animate-go  thickbox">
+                                                <img src="<%= work.get_field('short-image', theme_asset_url('images/1.jpg')) %>" class="img-responsive" alt="" />
+                                                <div class="mask"></div>
+                                                <div class="content">
+                                                    <span class="info" title="Full Image"> </span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                <% end %>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#horizontalTab').easyResponsiveTabs({
+                    type: 'default', //Types: default, vertical, accordion
+                    width: 'auto', //auto or any width like 600px
+                    fit: true   // 100% fit in a container
+                });
+            });
+
+        </script>
+    </div>
+</div>
+<!-- //portfolio -->
+<!-- features -->
+<div id="features" class="features">
+    <div class="container">
+        <h3><%= current_theme.the_field('features_layout_title', 'Our Features') %></h3>
+        <p class="vel"><%= current_theme.the_field('features_layout_descr', 'Some Key Points') %></p>
+        <% current_site.the_posts('our-features-esp').decorate.each_slice(2).to_a.each do |features| %>
+            <div class="services-grids">
+                <% features.each_with_index do |feature, index| %>
+                    <div class="col-md-6 services-grid-<%= index == 0 ? 'left' : 'right' %>">
+                        <div class="col-xs-4 services-grid-left1">
+                            <i class="hovicon effect-2 sub-a feat"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></i>
+                        </div>
+                        <div class="col-xs-8 services-grid-left2">
+                            <h4><%= feature.the_title %></h4>
+                            <p><%= feature.the_excerpt %><%= feature.the_edit_link %></p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                <% end %>
+                <div class="clearfix"> </div>
+            </div>
+        <% end %>
+    </div>
+</div>
