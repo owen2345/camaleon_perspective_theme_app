@@ -1,2 +1,10 @@
 This is the source code of the app done with the video https://youtu.be/ZQ44WiUm6Ks
 https://p.w3layouts.com/demos/perspective/web/index.html
+
+Installation:
+* clone or download this app
+* bundle install
+* rails server
+* navigate in your browser to http://localhost:3000
+
+Note: If don't have ruby on rails installed in your computer, please search in google "how install rails 4"
